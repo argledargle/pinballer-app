@@ -1,3 +1,16 @@
+##Overview
+
+This is a pet project of mine to create a scoring tool for my friends and I to keep track of
+our scores at bars/arcades. The goal is to allow peopel to log their scores and keep track of how they're performing.
+
+##Wireframes and userflows
+
+You can find a gist with all of the wireframe linkes [here](https://gist.github.com/argledargle/b30fb257e8427cf2ed651abe37272d9c).
+
+The sitemap can be located [here](https://photos.app.goo.gl/iZetmBdzY5bprMmV7)
+
+##DEFAULT README CONTENT BELOW HERE
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -66,4 +79,4 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
-"# pinballer-app" 
+"# pinballer-app"
