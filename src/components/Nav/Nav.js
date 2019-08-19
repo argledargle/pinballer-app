@@ -7,9 +7,15 @@ export default class Nav extends Component {
   renderLogoutLink() {
     return (
       <div className="Header__logged-in">
-        <Link onClick={this.handleLogoutClick} to="/">
-          Logout
-        </Link>
+        <span id="left">
+          <Link to="/">Pinballer</Link>
+        </span>
+        <span id="right">
+          <Link onClick={this.handleLogoutClick} to="/">
+            Logout
+          </Link>
+          <Link to="/pinball">Search</Link>
+        </span>
       </div>
     );
   }
@@ -17,20 +23,30 @@ export default class Nav extends Component {
   renderLoginLink() {
     return (
       <div className="Header__not-logged-in">
-        <Link to="/login">Log in</Link>
-        <Link to="/register">Register</Link>
+        <span id="left">
+          <Link to="/">Pinballer</Link>
+        </span>
+        <span id="right">
+          <Link to="/login">Log in</Link>
+          <Link to="/register">Register</Link>
+        </span>
       </div>
     );
   }
+
   render() {
     return (
       <>
         <div>
           <nav className="Nav__Header">
             <h1>
-              <span id="left"><Link to="/">Pinballer</Link></span>
-              <span id="right"><Link to="/login">Log in</Link>
-              <Link to="/register">Register</Link></span>
+              <span id="left">
+                <Link to="/">Pinballer</Link>
+              </span>
+              <span id="right">
+                <Link to="/login">Log in</Link>
+                <Link to="/register">Register</Link>
+              </span>
             </h1>
             {/* I still need to implement the TokenService functionality below this note.
           {TokenService.hasAuthToken()
