@@ -1,0 +1,14 @@
+*{
+    margin : 2px;
+}
+
+.Nav__Header {
+    font-size: 12px;
+}
+
+#left{
+    float:left;
+}
+#right{
+    float:right;
+}
