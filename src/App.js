@@ -9,6 +9,9 @@ import Register from "./components/Register/Register"
 import Account from "./components/Account/Account"
 import LocationSearchResults from "./components/LocationSearchResults/LocationSearchResults"
 import Location from "./components/Location/Location"
+import Machine from "./components/Machine/Machine"
+import Search from "./components/Search/Search"
+
 
 class App extends Component {
   render() {
@@ -22,6 +25,8 @@ class App extends Component {
           <Route exact path={"/account"} component={Account} />
           <Route exact path={"/locationresults"} component={LocationSearchResults} />
           <Route exact path={"/Location"} component={Location}/>
+          <Route exact path={"/machine"} component={Machine}/>
+          <Route exact path={"/search"} component={Search} />
         </Switch>
         <Footer />
       </main>

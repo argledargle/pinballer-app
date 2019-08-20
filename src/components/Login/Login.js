@@ -1,9 +1,11 @@
 import React, { Component } from "react";
-//import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./Login.css";
 
 export default class Nav extends Component {
   render() {
+    function handleClick(e) {
+      e.preventDefault()  }
     return (
       <div>
         <header role="banner">
@@ -20,7 +22,9 @@ export default class Nav extends Component {
               <label for="password">Password</label>
               <input type="password" name="password" id="password" />
             </div>
-            <button type="submit">Log In</button>
+            <button type="submit" onClick = {handleClick}>
+              <Link to="/account">Sign In</Link>
+            </button>
           </form>
         </section>
       </div>

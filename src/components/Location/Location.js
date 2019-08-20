@@ -1,7 +1,10 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom"
 
 export default class Location extends Component {
   render() {
+    function handleClick(e) {
+        e.preventDefault()    }
     return (
       <div>
         <main role="main">
@@ -12,7 +15,10 @@ export default class Location extends Component {
             <h2>Address</h2>
           </header>
           <section>
-            <b>Machine 1</b> <br />
+            <b>
+              <Link to="/machine"> Machine 1</Link>
+            </b>{" "}
+            <br />
             Player 1 : Score <br />
             Player 2 : Score <br />
             Player 3 : Score <br />
@@ -30,9 +36,9 @@ export default class Location extends Component {
             Player 3 : Score <br />
           </section>
           <section>
-            <form class="location-submission-form">
+            <form className="location-submission-form">
               <div>
-                <label for="loation-search">
+                <label htmlFor="loation-search">
                   Do we need to add a different machine?
                   <br />
                   Update our database below.
@@ -47,7 +53,7 @@ export default class Location extends Component {
                 <br />
               </div>
 
-              <button type="submit">Submit</button>
+              <button type="submit" onClick = {handleClick}>Submit</button>
             </form>
           </section>
         </main>

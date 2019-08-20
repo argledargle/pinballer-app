@@ -46,6 +46,7 @@ export default class Nav extends Component {
               <span id="right">
                 <Link to="/login">Log in</Link>
                 <Link to="/register">Register</Link>
+                <Link to="/search">Search</Link>
               </span>
             </h1>
             {/* I still need to implement the TokenService functionality below this note.

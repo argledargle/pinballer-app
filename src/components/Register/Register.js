@@ -1,6 +1,10 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
+
 export default class Register extends Component {
   render() {
+    function handleClick(e) {
+      e.preventDefault()  }
     return (
       <div>
         <header role="banner">
@@ -29,7 +33,7 @@ export default class Register extends Component {
               <label htmlFor="password">Confirm Password</label>
               <input type="password" name='confirm-password' id='confirm-password' />
             </div>
-            <button type='submit'>Sign Up</button>
+            <button type='submit' onClick={handleClick}><Link to ="/account">Register</Link></button>
             </form>
         </section>
       </div>
