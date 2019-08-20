@@ -4,8 +4,9 @@ import "./Login.css";
 
 export default class Nav extends Component {
   render() {
-    function handleClick(e) {
-      e.preventDefault()  }
+    // function handleClick(e) {
+    //   e.preventDefault();
+    // }
     return (
       <div>
         <header role="banner">
@@ -22,9 +23,11 @@ export default class Nav extends Component {
               <label for="password">Password</label>
               <input type="password" name="password" id="password" />
             </div>
-            <button type="submit" onClick = {handleClick}>
-              <Link to="/account">Sign In</Link>
-            </button>
+            <Link to="/account">
+              <button type="submit">
+                Sign In
+              </button>
+            </Link>
           </form>
         </section>
       </div>

@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 
 export default class Search extends Component {
   render() {
-    function handleClick(e) {
-        e.preventDefault()
-    }
+    // function handleClick(e) {
+    //     e.preventDefault()
+    // }
     return (
       <div>
         <main role="main">
@@ -25,7 +25,7 @@ export default class Search extends Component {
                   name="location-search"
                   id="location-search"
                 />
-                <button type="submit" onClick = {handleClick}><Link to="/Location">Search</Link></button>
+                <Link to="/locationresults"><button type="submit">Search</button></Link>
               </div>
             </form>
           </section>
@@ -37,7 +37,7 @@ export default class Search extends Component {
                 </label>
                 <br />
                 <input type="text" name="machine-search" id="machine-search" />
-                <button type="submit" onClick={handleClick}><Link to="/machine">Search</Link></button>
+                <Link to="/machine"><button type="submit">Search</button></Link>
               </div>
             </form>
           </section>
@@ -65,7 +65,7 @@ export default class Search extends Component {
                 />
               </div>
 
-              <button type="submit" onClick={handleClick}>Submit</button>
+              <Link to="/machine"><button type="submit">Submit</button></Link>
             </form>
           </section>
         </main>

@@ -4,9 +4,9 @@ import "./LandingPage.css";
 
 export default class LandingPage extends Component {
   render() {
-    function handleClick(e) {
-      e.preventDefault()
-  }
+  //   function handleClick(e) {
+  //     e.preventDefault()
+  // }
     return (
       <div>
         <header role="banner">
@@ -81,7 +81,7 @@ export default class LandingPage extends Component {
                 id="confirm-password"
               />
             </div>
-            <button type="submit" onClick={handleClick}><Link to ="/account">Sign Up</Link></button>
+            <Link to ="/account"><button type="submit">Sign Up</button></Link>
           </form>
         </section>
       </div>

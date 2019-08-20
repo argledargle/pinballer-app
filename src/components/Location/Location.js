@@ -3,8 +3,8 @@ import { Link } from "react-router-dom"
 
 export default class Location extends Component {
   render() {
-    function handleClick(e) {
-        e.preventDefault()    }
+    // function handleClick(e) {
+    //     e.preventDefault()    }
     return (
       <div>
         <main role="main">
@@ -53,7 +53,7 @@ export default class Location extends Component {
                 <br />
               </div>
 
-              <button type="submit" onClick = {handleClick}>Submit</button>
+              <Link to="/machine"><button type="submit">Submit</button></Link>
             </form>
           </section>
         </main>

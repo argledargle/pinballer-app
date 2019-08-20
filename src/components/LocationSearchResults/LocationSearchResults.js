@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 
 export default class LocationSearchResults extends Component {
   render() {
-    function handleClick(e) {
-        e.preventDefault()
-    }
+    // function handleClick(e) {
+    //     e.preventDefault()
+    // }
     return (
       <div>
         <main role="main">
@@ -39,7 +39,7 @@ export default class LocationSearchResults extends Component {
                 />
               </div>
 
-              <button type="submit" onClick={handleClick}>Submit</button>
+              <Link to="/machine"><button type="submit">Submit</button></Link>
             </form>
           </section>
         </main>

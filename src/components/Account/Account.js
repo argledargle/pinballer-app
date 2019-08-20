@@ -50,7 +50,7 @@ export default class LandingPage extends Component {
               </label>
               <input type="text" name="location-search" id="location-search" />
             </div>
-            <button type="submit" onCli = {handleClick}>Search</button>
+            <button type="submit" onClick = {handleClick}>Search</button>
           </form>
         </section>
       </div>
