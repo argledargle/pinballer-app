@@ -41,7 +41,7 @@ export default class Search extends Component {
               </div>
             </form>
           </section>
-          <section>
+          {/* <section>
             <form className="location-submission-form">
               <div>
                 <label htmlFor="loation-search">
@@ -67,7 +67,7 @@ export default class Search extends Component {
 
               <Link to="/machine"><button type="submit">Submit</button></Link>
             </form>
-          </section>
+          </section> */}
         </main>
       </div>
     );

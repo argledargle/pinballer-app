@@ -32,8 +32,12 @@ export default class Register extends Component {
               />
             </div>
             <div>
-              <label htmlFor="username">Email</label>
-              <input type="text" name="username" id="username" />
+              <label htmlFor="nickname">Nickname</label>
+              <input type="text" name="nickname" id="nickname" />
+            </div>
+            <div>
+              <label htmlFor="email">Email</label>
+              <input type="text" name="email" id="email" />
             </div>
             <div>
               <label htmlFor="password">Password</label>

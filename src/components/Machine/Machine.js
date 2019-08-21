@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 export default class Machine extends Component {
   render() {
@@ -37,6 +38,34 @@ export default class Machine extends Component {
         <section>Player 2 : Score</section>
 
         <section>Player 3 : Score</section>
+
+        <section>
+            <form className="machine-submission-form">
+              <div>
+                <label htmlFor="machine-submission-form">
+                  Can't find the location that you're searching for?
+                  <br />
+                  Submit the location below.
+                </label>
+                <br />
+                Machine Name:{" "}
+                <input
+                  type="text"
+                  name="machine-submission-name"
+                  id="machine-submission-name"
+                />
+                <br />
+                Location Name:{" "}
+                <input
+                  type="text"
+                  name="machine-submission-address"
+                  id="machine-submission-address"
+                />
+              </div>
+
+              <Link to="/machine"><button type="submit">Submit</button></Link>
+            </form>
+          </section> 
       </main>
     );
   }

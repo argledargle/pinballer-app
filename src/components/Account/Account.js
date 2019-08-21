@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 
 export default class LandingPage extends Component {
   render() {
-        function handleClick(e) {
-            e.preventDefault()
-        }
+    // function handleClick(e) {
+    //   e.preventDefault();
+    // }
     return (
       <div>
         <header role="banner">
@@ -17,11 +17,20 @@ export default class LandingPage extends Component {
         <section>
           <h3>Current high scores</h3>
           <br />
-          <b><Link to="/machine">Mars attacks!</Link></b> : 30,120,460
+          <b>
+            <Link to="/machine">Mars attacks!</Link>
+          </b>{" "}
+          : 30,120,460
           <br />
-          <b><Link to="/machine">Medieval Madness</Link></b> : 16,527,380
+          <b>
+            <Link to="/machine">Medieval Madness</Link>
+          </b>{" "}
+          : 16,527,380
           <br />
-          <b><Link to="/machine">Metallica</Link></b> : 4,135,040
+          <b>
+            <Link to="/machine">Metallica</Link>
+          </b>{" "}
+          : 4,135,040
         </section>
         {/* I need to implement logic that only
         loads the below section if there's
@@ -29,7 +38,10 @@ export default class LandingPage extends Component {
         <section>
           <h3>Management</h3>
           <br />
-          <p>This content will only be available after an 'admin' user has logged in.</p>
+          <p>
+            This content will only be available after an 'admin' user has logged
+            in.
+          </p>
         </section>
         <section>
           <form class="machine-search-form">
@@ -39,7 +51,9 @@ export default class LandingPage extends Component {
               </label>
               <input type="text" name="machine-search" id="machine-search" />
             </div>
-            <button type="submit" onClick = {handleClick}>Search</button>
+              <Link to="/machineedit">
+                <button type="submit">Search</button>
+              </Link>
           </form>
         </section>
         <section>
@@ -50,7 +64,9 @@ export default class LandingPage extends Component {
               </label>
               <input type="text" name="location-search" id="location-search" />
             </div>
-            <button type="submit" onClick = {handleClick}>Search</button>
+            <Link to="/locationedit">
+              <button type="submit">Search</button>
+            </Link>
           </form>
         </section>
       </div>

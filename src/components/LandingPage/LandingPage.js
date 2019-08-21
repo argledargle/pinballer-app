@@ -66,6 +66,10 @@ export default class LandingPage extends Component {
               />
             </div>
             <div>
+              <label htmlFor="nickname">Nickname</label>
+              <input type="text" name="nickname" id="nickname" />
+            </div>
+            <div>
               <label htmlFor="username">Email</label>
               <input type="text" name="username" id="username" />
             </div>
