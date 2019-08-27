@@ -5,6 +5,8 @@ export default class Register extends Component {
   render() {
     // function handleClick(e) {
     //   e.preventDefault()  }
+  // need to add content here to handle login functionality.
+  // found in auth-jwt section of thinkful.
     return (
       <div>
         <header role="banner">
