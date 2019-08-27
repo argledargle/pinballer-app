@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 
 export default class Machine extends Component {
   render() {
-        function handleClick(e) {
-            e.preventDefault()        }
-
+    function handleClick(e) {
+      e.preventDefault();
+    }
 
     return (
       <main role="main">
@@ -24,10 +24,20 @@ export default class Machine extends Component {
                 type="number"
                 name="score-submission"
                 id="score-submission"
+                placeholder = "Submit your score"
+              />
+              <br />
+              <input
+                type="number"
+                name="score-check"
+                id="score-check"
+                placeholder = "Confirm your score"
               />
             </div>
 
-            <button type="submit" onClick={handleClick}>Submit</button>
+            <button type="submit" onClick={handleClick}>
+              Submit
+            </button>
           </form>
         </section>
 
@@ -40,32 +50,34 @@ export default class Machine extends Component {
         <section>Player 3 : Score</section>
 
         <section>
-            <form className="machine-submission-form">
-              <div>
-                <label htmlFor="machine-submission-form">
-                  Can't find the location that you're searching for?
-                  <br />
-                  Submit the location below.
-                </label>
+          <form className="machine-submission-form">
+            <div>
+              <label htmlFor="machine-submission-form">
+                Can't find the location that you're searching for?
                 <br />
-                Machine Name:{" "}
-                <input
-                  type="text"
-                  name="machine-submission-name"
-                  id="machine-submission-name"
-                />
-                <br />
-                Location Name:{" "}
-                <input
-                  type="text"
-                  name="machine-submission-address"
-                  id="machine-submission-address"
-                />
-              </div>
+                Submit the location below.
+              </label>
+              <br />
+              Machine Name:{" "}
+              <input
+                type="text"
+                name="machine-submission-name"
+                id="machine-submission-name"
+              />
+              <br />
+              Location Name:{" "}
+              <input
+                type="text"
+                name="machine-submission-address"
+                id="machine-submission-address"
+              />
+            </div>
 
-              <Link to="/machine"><button type="submit">Submit</button></Link>
-            </form>
-          </section> 
+            <Link to="/machine">
+              <button type="submit">Submit</button>
+            </Link>
+          </form>
+        </section>
       </main>
     );
   }
