@@ -19,7 +19,7 @@ import ScrollToTop from "./components/Helpers/ScrollToTop";
 class App extends Component {
   render() {
     return (
-      <Router onUpdate={() => window.scrollTo(0, 0)}>
+      <Router>
         <ScrollToTop>
           <main className="App">
             <Nav />
