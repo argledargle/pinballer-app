@@ -39,7 +39,7 @@ export default class LocationSearchResults extends Component {
                 />
               </div>
 
-              <Link to="/machine"><button type="submit">Submit</button></Link>
+              <Link to="/locationresults"><button type="submit">Submit</button></Link>
             </form>
           </section>
         </main>
