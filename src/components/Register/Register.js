@@ -1,14 +1,45 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import AuthApiService from "../../services/auth-api-services";
 
 export default class Register extends Component {
+  static defaultProps = {
+    onRegistrationSuccess: () => {}
+  };
+
+  state = { error: null };
+
+  handleSubmitJwtAuth = ev => {
+    ev.preventDefault();
+    const { nickname, password, first_name, last_name, email } = ev.target;
+
+    this.setState({ error: null });
+    AuthApiService.postUser({
+      nickname: nickname.value,
+      password: password.value,
+      first_name: first_name.value,
+      last_name: last_name.value,
+      email: email.value
+    })
+      .then(user => {
+        nickname.value = "";
+        first_name.value = "";
+        last_name.value = "";
+        password.value = "";
+        email.value = "";
+        this.props.onRegistrationSuccess();
+      })
+      .catch(res => {
+        this.setState({ error: res.error });
+      });
+  };
+
   render() {
-    // function handleClick(e) {
-    //   e.preventDefault()  }
-  // need to add content here to handle login functionality.
-  // found in auth-jwt section of thinkful.
+    const { error } = this.state;
+
     return (
       <div>
+        <div role="alert">{error && <p className="red">{error}</p>}</div>
         <header role="banner">
           <h1>Register</h1>
           <h2>Sign-up!</h2>
