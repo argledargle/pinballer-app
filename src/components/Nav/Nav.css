@@ -1,14 +1,72 @@
-nav > *{
-    margin : 2px;
-}
-
-.Nav__Header {
+/* * {
+    margin: 2px;
+  } */
+  
+  .Nav__Header {
     font-size: 12px;
-}
-
-#left{
-    float:left;
-}
-#right{
-    float:right;
-}
+    background: #FFD7B0;
+    color: #660000;
+  }
+  /* begin menu content */
+  .menu {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+  }
+  
+  #menu-text:hover {
+    text-decoration: underline;
+  }
+  
+  #menu-text:active {
+    text-decoration: underline overline;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 1;
+  }
+  
+  #menu-text:hover .dropdown-content {
+    display: block;
+  }
+  
+  a:link {
+    color: #660000;
+    text-decoration: none;
+  }
+  
+  a:visited {
+    color: #660000;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  a:active {
+    text-decoration: underline overline;
+  }
+  
+  .down {
+    border: solid #660000;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+  }
+  
+  /* end menu content */
+  
+  #left {
+    float: left;
+  }
+  #right {
+    float: right;
+  }
+  

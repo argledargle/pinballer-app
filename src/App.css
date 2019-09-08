@@ -12,7 +12,8 @@
   }
   
   nav,
-  footer {
+  /* footer */
+   {
     padding: 1% 0;
     background-color: #aaa;
   }
@@ -24,15 +25,6 @@
     right: 0;
     z-index: 10;
   }
-
-  footer {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      z-index: 10;
-      width: 100%
-  }
     
   header {
     padding: 12% 0;
@@ -41,11 +33,13 @@
   section {
     min-height: 200px;
     padding: 6% 0;
-    background-color: #bbb;
+    /* background-color: #bbb; */
+    background-color: #FFF0E0;
   }
   
   section:nth-child(even) {
-    background-color: #ddd;
+    /* background-color: #ddd; */
+    background-color: #FFE7CF;
   }
 
   section:nth-last-child(1) {
