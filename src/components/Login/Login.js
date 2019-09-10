@@ -1,12 +1,38 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import AuthApiService from "../../services/auth-api-services"
 import "./Login.css";
 
 export default class Nav extends Component {
+  static defaultProps = {
+    onLoginSuccess: () => {}
+  };
+
+  state = { error: null };
+
+  handleSubmitJwtAuth = ev => {
+    ev.preventDefault();
+    this.setState({ error: null });
+    const { username, password } = ev.target;
+
+    AuthApiService.postLogin({
+      user_nick_name: username.value,
+      user_password: password.value
+    })
+      .then(res => {
+        username.value = "";
+        password.value = "";
+        this.props.onLoginSuccess();
+      })
+      .catch(res => {
+        this.setState({ error: res.error });
+      });
+  };
+
+  state = { error: null };
+
   render() {
-    // function handleClick(e) {
-    //   e.preventDefault();
-    // }
+    
     return (
       <div>
         <header role="banner">
@@ -14,20 +40,20 @@ export default class Nav extends Component {
           <h2>Enter your email and password</h2>
         </header>
         <section>
-          <form class="signin-form">
+          <form onSubmit={this.handleSubmitJwtAuth} className="signin-form">
             <div>
-              <label for="username">Email</label>
+              <label htmlFor="username">Nick name</label>
               <input type="text" name="username" id="username" />
             </div>
             <div>
-              <label for="password">Password</label>
+              <label htmlFor="password">Password</label>
               <input type="password" name="password" id="password" />
             </div>
-            <Link to="/account">
+            {/* <Link to="/account"> */}
               <button type="submit">
                 Sign In
               </button>
-            </Link>
+            {/* </Link> */}
           </form>
         </section>
       </div>

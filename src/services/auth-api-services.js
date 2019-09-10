@@ -4,6 +4,8 @@ import IdleService from "./idle-service";
 
 const AuthApiService = {
   postUser(user) {
+    console.log(user)
+    console.log('API endpoint', `${config.API_ENDPOINT}/users`)
     return fetch(`${config.API_ENDPOINT}/users`, {
       method: "POST",
       headers: {
@@ -14,13 +16,13 @@ const AuthApiService = {
       !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
     );
   },
-  postLogin({ user_name, password }) {
+  postLogin({ user_nick_name, user_password }) {
     return fetch(`${config.API_ENDPOINT}/auth/login`, {
       method: "POST",
       headers: {
         "content-type": "application/json"
       },
-      body: JSON.stringify({ user_name, password })
+      body: JSON.stringify({ user_nick_name, user_password })
     })
       .then(res =>
         !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
@@ -37,6 +39,8 @@ const AuthApiService = {
         TokenService.queueCallbackBeforeExpiry(() => {
           AuthApiService.postRefreshToken();
         });
+        // Use this console.log to see the response from the login
+        // console.log(res)
         return res;
       });
   },

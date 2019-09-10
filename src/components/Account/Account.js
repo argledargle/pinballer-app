@@ -2,12 +2,24 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
 export default class LandingPage extends Component {
+
+  static defaultProps ={
+  }
+  
+  state = { error: null };
+
+  componentDidMount() {
+    // put logic here that uses context of user logged in to fetch data from
+    // the `/users/:user_id api
+  }
+
   render() {
-    // function handleClick(e) {
-    //   e.preventDefault();
-    // }
+    
+    const { error } = this.state;
+
     return (
       <div>
+        <div role="alert">{error && <p className="red">{error}</p>}</div>
         <header role="banner">
           <h1>Welcome</h1>
           <h2>
@@ -32,9 +44,15 @@ export default class LandingPage extends Component {
           </b>{" "}
           : 4,135,040
         </section>
-        {/* I need to implement logic that only
+
+
+        {/*
+
+        Admin section deemed out of scope for current release
+        
+        I need to implement logic that only
         loads the below section if there's
-        an admin logged in */}
+        an admin logged in
         <section>
           <h3>Management</h3>
           <br />
@@ -44,22 +62,22 @@ export default class LandingPage extends Component {
           </p>
         </section>
         <section>
-          <form class="machine-search-form">
+          <form className="machine-search-form">
             <div>
-              <label for="machine search">
+              <label htmlFor="machine search">
                 Which machine do you want to change?
               </label>
               <input type="text" name="machine-search" id="machine-search" />
             </div>
-              <Link to="/machineedit">
-                <button type="submit">Search</button>
-              </Link>
+            <Link to="/machineedit">
+              <button type="submit">Search</button>
+            </Link>
           </form>
         </section>
         <section>
-          <form class="location-search-form">
+          <form className="location-search-form">
             <div>
-              <label for="location search">
+              <label htmlFor="location search">
                 Which location do you want to change?
               </label>
               <input type="text" name="location-search" id="location-search" />
@@ -68,7 +86,7 @@ export default class LandingPage extends Component {
               <button type="submit">Search</button>
             </Link>
           </form>
-        </section>
+         </section> */}
       </div>
     );
   }

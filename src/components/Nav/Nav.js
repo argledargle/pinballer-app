@@ -1,9 +1,17 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import TokenService from '../../services/token-service'
+import IdleService from '../../services/idle-service'
 import "./Nav.css";
 
 export default class Nav extends Component {
-  handleLogoutClick = () => {};
+  handleLogoutClick = () => {
+    TokenService.clearAuthToken();
+    /* when logging out, clear the callbacks to the refresh api and idle auto logout */
+    TokenService.clearCallbackBeforeExpiry();
+    IdleService.unRegisterIdleResets();
+  };
+
   renderLogoutLink() {
     return (
       <div className="Header__logged-in">
@@ -40,20 +48,20 @@ export default class Nav extends Component {
         <div>
           <nav className="Nav__Header">
             <h1>
-              <span id="left">
+              {/* <span id="left">
                 <Link to="/">Pinballer</Link>
               </span>
               <span id="right">
                 <Link to="/login">Log in</Link>
                 <Link to="/register">Register</Link>
                 <Link to="/search">Search</Link>
-              </span>
-            </h1>
-            {/* I still need to implement the TokenService functionality below this note.
+              </span> */}
+            
+            {/* I still need to implement the TokenService functionality below this note.  */}
           {TokenService.hasAuthToken()
             ? this.renderLogoutLink()
             : this.renderLoginLink()}
-             */}
+           </h1>
           </nav>
         </div>
       </>

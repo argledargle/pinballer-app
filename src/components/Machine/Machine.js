@@ -2,10 +2,26 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
 export default class Machine extends Component {
+
+  static defaultProps = {
+  };
+
+  state = { error: null };
+
+  scoreSubmission = ev => {
+    ev.preventDefault();
+    this.setState({ error: null });
+    //add code to finish this
+  }
+
+  machineSubmission = ev => {
+    ev.preventDefault();
+    this.setState({ error: null });
+    //add code to finish this
+  }
+
   render() {
-    function handleClick(e) {
-      e.preventDefault();
-    }
+      
 
     return (
       <main role="main">
@@ -35,7 +51,7 @@ export default class Machine extends Component {
               />
             </div>
 
-            <button type="submit" onClick={handleClick}>
+            <button type="submit" onClick={this.scoreSubmission}>
               Submit
             </button>
           </form>
@@ -50,7 +66,7 @@ export default class Machine extends Component {
         <section>Player 3 : Score</section>
 
         <section>
-          <form className="machine-submission-form">
+          <form onSubmit={this.machineSubmission} className="machine-submission-form">
             <div>
               <label htmlFor="machine-submission-form">
                 Can't find the location that you're searching for?
