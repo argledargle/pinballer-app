@@ -14,7 +14,6 @@ export default class Nav extends Component {
     ev.preventDefault();
     this.setState({ error: null });
     const { username, password } = ev.target;
-
     AuthApiService.postLogin({
       user_nick_name: username.value,
       user_password: password.value
@@ -27,6 +26,7 @@ export default class Nav extends Component {
       .catch(res => {
         this.setState({ error: res.error });
       });
+      this.props.history.push("/account")
   };
 
   state = { error: null };

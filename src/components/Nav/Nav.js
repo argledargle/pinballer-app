@@ -48,16 +48,6 @@ export default class Nav extends Component {
         <div>
           <nav className="Nav__Header">
             <h1>
-              {/* <span id="left">
-                <Link to="/">Pinballer</Link>
-              </span>
-              <span id="right">
-                <Link to="/login">Log in</Link>
-                <Link to="/register">Register</Link>
-                <Link to="/search">Search</Link>
-              </span> */}
-            
-            {/* I still need to implement the TokenService functionality below this note.  */}
           {TokenService.hasAuthToken()
             ? this.renderLogoutLink()
             : this.renderLoginLink()}
