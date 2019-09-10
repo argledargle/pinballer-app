@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import AuthApiService from "../../services/auth-api-services";
 
 export default class Register extends Component {
@@ -11,9 +11,13 @@ export default class Register extends Component {
 
   handleSubmitJwtAuth = ev => {
     ev.preventDefault();
-    const { nickname, user_password, user_first_name, user_last_name, user_email } = ev.target;
-
-    console.log("submit");
+    const {
+      nickname,
+      user_password,
+      user_first_name,
+      user_last_name,
+      user_email
+    } = ev.target;
 
     this.setState({ error: null });
     AuthApiService.postUser({
@@ -41,15 +45,16 @@ export default class Register extends Component {
 
     return (
       <div>
-        <div role="alert">{error && <p className="red">{error}</p>}</div>
         <header role="banner">
           <h1>Register</h1>
           <h2>Sign-up!</h2>
         </header>
+        <div role="alert">{error && <p className="red">{error}</p>}</div>
         <section>
           <form onSubmit={this.handleSubmitJwtAuth} classfor="signup-form">
             <div>
-              <label htmlFor="first-name">First name</label>
+              <label htmlFor="first-name" className="hide-element">First name</label>
+              {/* <br /> */}
               <input
                 required
                 value={this.state.user_first_name}
@@ -60,7 +65,8 @@ export default class Register extends Component {
               />
             </div>
             <div>
-              <label htmlFor="last-name">Last name</label>
+              <label htmlFor="last-name" className="hide-element">Last name</label>
+              {/* <br /> */}
               <input
                 required
                 value={this.state.user_last_name}
@@ -71,47 +77,53 @@ export default class Register extends Component {
               />
             </div>
             <div>
-              <label htmlFor="nickname">Nickname</label>
+              <label htmlFor="nickname" className="hide-element">Nickname</label>
+              {/* <br /> */}
               <input
                 required
                 value={this.state.nickname}
                 type="text"
                 name="nickname"
                 id="nickname"
+                placeholder="Nickname"
               />
             </div>
             <div>
-              <label htmlFor="email">Email</label>
+              <label htmlFor="email" className="hide-element">Email</label>
+              {/* <br /> */}
               <input
                 required
                 value={this.state.user_email}
                 type="text"
                 name="user_email"
                 id="user_email"
+                placeholder="Email"
               />
             </div>
             <div>
-              <label htmlFor="user_password">password</label>
+              <label htmlFor="user_password" className="hide-element">Password</label>
+              {/* <br /> */}
               <input
                 required
                 value={this.state.user_password}
                 type="password"
                 name="user_password"
                 id="user_password"
+                placeholder="Password"
               />
             </div>
-            <div>
+            {/* <div>
               <label htmlFor="user_password">Confirm password</label>
               <input
                 required
                 type="password"
-                name="confirm-user_password"
-                id="confirm-user_password"
+                name="confirm_user_password"
+                id="confirm_user_password"
               />
-            </div>
-            <Link to="/account">
+            </div> */}
+            {/* <Link to="/account"> */}
             <button type="submit">Register</button>
-            </Link>
+            {/* </Link> */}
           </form>
         </section>
       </div>

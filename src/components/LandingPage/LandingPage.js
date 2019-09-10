@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import "./LandingPage.css";
 
 export default class LandingPage extends Component {
   render() {
-  //   function handleClick(e) {
-  //     e.preventDefault()
-  // }
+    //  function handleClick(e) {
+    //    e.preventDefault()
+    //  }
     return (
       <div>
         <header role="banner">
@@ -44,7 +44,7 @@ export default class LandingPage extends Component {
         {/* I'm not sure if I even want to include this.
         I already have a register link in the nav bar. */}
 
-        <section>
+        {/* <section>
           <h3>Sign-up</h3>
           <form classfor="signup-form">
             <div>
@@ -87,7 +87,7 @@ export default class LandingPage extends Component {
             </div>
             <Link to ="/account"><button type="submit">Sign Up</button></Link>
           </form>
-        </section>
+        </section> */}
       </div>
     );
   }
