@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 // import { Link } from "react-router-dom";
 import AuthApiService from "../../services/auth-api-services";
+import UserContext from "../../contexts/UserContext.js";
 
 export default class Register extends Component {
+  static contextType = UserContext;
   static defaultProps = {
     onRegistrationSuccess: () => {}
   };
@@ -42,7 +44,7 @@ export default class Register extends Component {
 
   render() {
     const { error } = this.state;
-
+    console.log("this context", this.context);
     return (
       <div>
         <header role="banner">

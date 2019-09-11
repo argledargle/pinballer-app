@@ -13,31 +13,48 @@ import Machine from "./components/Machine/Machine";
 import Search from "./components/Search/Search";
 import MachineEdit from "./components/MachineEdit/MachineEdit";
 import LocationEdit from "./components/LocationEdit/LocationEdit";
-
+import UserContext from "./contexts/UserContext";
 import ScrollToTop from "./components/Helpers/ScrollToTop";
 
 class App extends Component {
+  static contextType = UserContext;
   render() {
+    const contextValue = {
+      pinballer_user_id: null,
+      user_first_name: null,
+      user_last_name: null,
+      user_email: null,
+      admin_access: false,
+    
+      addpinballer_user_id: () => {},
+      adduser_first_name: () => {},
+      adduser_last_name: () => {},
+      adduser_email: () => {},
+      addadmin_access: () => {}
+    };
+    console.log(contextValue);
     return (
       <Router>
         <ScrollToTop>
           <main className="App">
             <Nav />
             <Switch>
-              <Route exact path={"/"} component={LandingPage} />
-              <Route exact path={"/login"} component={Login} />
-              <Route exact path={"/register"} component={Register} />
-              <Route exact path={"/account"} component={Account} />
-              <Route
-                exact
-                path={"/locationresults"}
-                component={LocationSearchResults}
-              />
-              <Route exact path={"/Location"} component={Location} />
-              <Route exact path={"/machine"} component={Machine} />
-              <Route exact path={"/search"} component={Search} />
-              <Route exact path={"/machineedit"} component={MachineEdit} />
-              <Route exact path={"/locationedit"} component={LocationEdit} />
+              <UserContext.Provider value={contextValue}>
+                <Route exact path={"/"} component={LandingPage} />
+                <Route exact path={"/login"} component={Login} />
+                <Route exact path={"/register"} component={Register} />
+                <Route exact path={"/account"} component={Account} />
+                <Route
+                  exact
+                  path={"/locationresults"}
+                  component={LocationSearchResults}
+                />
+                <Route exact path={"/Location"} component={Location} />
+                <Route exact path={"/machine"} component={Machine} />
+                <Route exact path={"/search"} component={Search} />
+                <Route exact path={"/machineedit"} component={MachineEdit} />
+                <Route exact path={"/locationedit"} component={LocationEdit} />
+              </UserContext.Provider>
             </Switch>
             <Footer />
           </main>
