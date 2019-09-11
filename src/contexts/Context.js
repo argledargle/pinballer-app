@@ -1,7 +1,8 @@
 import React from "react";
 
-const UserContext = React.createContext({
+const Context = React.createContext({
   pinballer_user_id: null,
+  user_nick_name: null,
   user_first_name: null,
   user_last_name: null,
   user_email: null,
@@ -14,4 +15,4 @@ const UserContext = React.createContext({
 //   addadmin_access: () => {}
 });
 
-export default UserContext;
+export default Context;

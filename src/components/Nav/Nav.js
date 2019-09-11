@@ -22,7 +22,7 @@ export default class Nav extends Component {
           <Link onClick={this.handleLogoutClick} to="/">
             Logout
           </Link>
-          <Link to="/pinball">Search</Link>
+          <Link to="/search">Search</Link>
         </span>
       </div>
     );

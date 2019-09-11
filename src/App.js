@@ -13,24 +13,19 @@ import Machine from "./components/Machine/Machine";
 import Search from "./components/Search/Search";
 import MachineEdit from "./components/MachineEdit/MachineEdit";
 import LocationEdit from "./components/LocationEdit/LocationEdit";
-import UserContext from "./contexts/UserContext";
+import Context from "./contexts/Context";
 import ScrollToTop from "./components/Helpers/ScrollToTop";
 
 class App extends Component {
-  static contextType = UserContext;
+  static contextType = Context;
   render() {
     const contextValue = {
       pinballer_user_id: null,
+      user_nick_name: null,
       user_first_name: null,
       user_last_name: null,
       user_email: null,
       admin_access: false,
-    
-      addpinballer_user_id: () => {},
-      adduser_first_name: () => {},
-      adduser_last_name: () => {},
-      adduser_email: () => {},
-      addadmin_access: () => {}
     };
     console.log(contextValue);
     return (
@@ -39,7 +34,7 @@ class App extends Component {
           <main className="App">
             <Nav />
             <Switch>
-              <UserContext.Provider value={contextValue}>
+              <Context.Provider value={contextValue}>
                 <Route exact path={"/"} component={LandingPage} />
                 <Route exact path={"/login"} component={Login} />
                 <Route exact path={"/register"} component={Register} />
@@ -54,7 +49,7 @@ class App extends Component {
                 <Route exact path={"/search"} component={Search} />
                 <Route exact path={"/machineedit"} component={MachineEdit} />
                 <Route exact path={"/locationedit"} component={LocationEdit} />
-              </UserContext.Provider>
+              </Context.Provider>
             </Switch>
             <Footer />
           </main>

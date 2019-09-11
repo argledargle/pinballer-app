@@ -3,11 +3,11 @@ import React, { Component } from "react";
 import AuthApiService from "../../services/auth-api-services";
 import "./Login.css";
 import TokenService from "../../services/token-service";
-// import UserContext from "../../contexts/UserContext";
-import UserContext from "../../contexts/UserContext.js";
+// import Context from "../../contexts/Context";
+import Context from "../../contexts/Context.js";
 
 export default class Nav extends Component {
-  static contextType = UserContext;
+  static contextType = Context;
 
   static defaultProps = {
     onLoginSuccess: () => {}
@@ -36,8 +36,8 @@ export default class Nav extends Component {
           `res.dbUser.pinballer_user_id`,
           res.dbUser.pinballer_user_id
         );
-        // this.context.addpinballer_user_id(res.dbUser.pinballer_user_id);
         this.context.pinballer_user_id = res.dbUser.pinballer_user_id;
+        this.context.user_nick_name = res.dbUser.user_nick_name;
         console.log("this context", this.context);
         this.setState({
           user: res.dbUser
@@ -46,25 +46,22 @@ export default class Nav extends Component {
         password.value = "";
         TokenService.saveAuthToken(res.authToken);
         this.props.onLoginSuccess();
-
-        // window.location = '/account';
-        // window.location forces a reload to the destination
       })
       .catch(res => {
         this.setState({ error: res.error });
       });
+      // this.props.history.push("/account")
   };
 
-  // state = { error: null };
+  state = { error: null };
 
   render() {
-    console.log("UserContext", this.contextType);
+    console.log("Context", this.context);
     console.log(`user`, this.state.user);
     return (
       <div>
         <header role="banner">
           <h1>Log-in</h1>
-          {/* <p>{ this.state.user.user_first_name}</p> */}
           <h2>Enter your email and password</h2>
         </header>
         <section>

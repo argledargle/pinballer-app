@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import Context from "../../contexts/Context.js";
 
 export default class LandingPage extends Component {
-
+  static contextType = Context;
   static defaultProps ={
   }
   
@@ -14,7 +15,7 @@ export default class LandingPage extends Component {
   }
 
   render() {
-    
+    console.log("this context", this.context);
     const { error } = this.state;
 
     return (
