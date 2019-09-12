@@ -24,13 +24,13 @@ export default class LandingPage extends Component {
       user_last_name: window.sessionStorage.getItem("user_last_name"),
       pinballer_user_id: window.sessionStorage.getItem("pinballer_user_id")
     });
-    console.log("user ID for API call", this.context.pinballer_user_id);
+    console.log("user ID for API call", this.state.pinballer_user_id);
     await fetch(
-      `${config.API_ENDPOINT}/scores/user/${this.context.pinballer_user_id}`
+      `${config.API_ENDPOINT}/scores/user/${this.state.pinballer_user_id}`
     )
       .then(
         console.log(
-          `${config.API_ENDPOINT}/scores/user/${this.context.pinballer_user_id}`
+          `${config.API_ENDPOINT}/scores/user/${this.state.pinballer_user_id}`
         )
       )
       .then(res => res.json())
@@ -56,7 +56,7 @@ export default class LandingPage extends Component {
     console.log('this.state.hasDataLoaded', this.state.hasDataLoaded)
 
     if (!this.state.hasDataLoaded) {
-      return <h1>Loading</h1>;
+      return (<h1>Loading</h1>);
     }
 
     return (
