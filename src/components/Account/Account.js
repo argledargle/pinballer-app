@@ -24,7 +24,7 @@ export default class LandingPage extends Component {
   //the rest of the app for our API calls
 
   async componentDidMount() {
-    console.log('pinballer_user_id', this.context.pinballer_user_id);
+    console.log("pinballer_user_id", this.context.pinballer_user_id);
     this.setState({
       user_nick_name: window.sessionStorage.getItem("user_nick_name"),
       admin_access: window.sessionStorage.getItem("admin_access"),
@@ -39,17 +39,7 @@ export default class LandingPage extends Component {
       .then(res => res.json())
       .then(accountScores => this.setState({ accountScores }))
       .then(() => this.setState({ hasDataLoaded: true }));
-    }
-    // AccountServices.getUser(this.context.pinballer_user_id);
-    // put logic here that uses context of user logged in to fetch data from
-    // the `/users/:user_id api`
-    // this.setState({
-    //   user_nick_name: window.sessionStorage.getItem("user_nick_name"),
-    //   admin_access: window.sessionStorage.getItem("admin_access"),
-    //   user_first_name: window.sessionStorage.getItem("user_first_name"),
-    //   user_last_name: window.sessionStorage.getItem("user_last_name"),
-    //   pinballer_user_id: window.sessionStorage.getItem("pinballer_user_id")
-    // });
+  }
 
   render() {
     console.log("this.state", this.state);
@@ -61,7 +51,10 @@ export default class LandingPage extends Component {
     if (!this.state.hasDataLoaded) {
       return (
         <div>
-          <h1>Loading</h1>
+          <div role="alert">{error && <p className="red">{error}</p>}</div>
+          <header role="banner">
+            <h1>Loading</h1>
+          </header>
         </div>
       );
     }
@@ -72,20 +65,20 @@ export default class LandingPage extends Component {
         <header role="banner">
           <h1>Welcome</h1>
           <h2>
-            [<i>{this.state.user_nick_name}</i>]
+            <i>{this.state.user_nick_name}</i>
           </h2>
         </header>
         <section>
-          <h3>Current high scores</h3>
+          <h3>Current scores</h3>
           <br />
           {/* mapping results from the API call above */}
-          {/* {this.state.accountScores.map(this.state.accountScores, i => {
+          {this.state.accountScores.map(score_value => {
             return (
-              <li key={i} className="scores">
-                <p></p>
+              <li key={score_value.macine_id} className="machine">
+                <p>{score_value.machine_name} : {score_value.score_value}</p>
               </li>
             );
-          })} */}
+          })}
           {/* done mapping results from api key above */}
           <b>
             <Link to="/machine">Mars attacks!</Link>

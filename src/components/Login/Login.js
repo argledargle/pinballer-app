@@ -31,11 +31,6 @@ export default class Nav extends Component {
       user_password: password.value
     })
       .then(res => {
-        // console.log(`res.dbUser`, res.dbUser);
-        // console.log(
-        //   `res.dbUser.pinballer_user_id`,
-        //   res.dbUser.pinballer_user_id
-        // );
         this.context.pinballer_user_id = res.dbUser.pinballer_user_id;
         window.sessionStorage.setItem(
           "pinballer_user_id",
@@ -60,28 +55,23 @@ export default class Nav extends Component {
         );
         console.log("this context", this.context);
         this.setState({
-          user: res.dbUser,
-          hasDataLoaded: true
+          user: res.dbUser
         });
         username.value = "";
         password.value = "";
         TokenService.saveAuthToken(res.authToken);
         this.props.onLoginSuccess();
+        this.props.history.push("/account");
       })
       .catch(res => {
         this.setState({ error: res.error });
       });
-    console.log("this.state.hasDataLoaded", this.state.hasDataLoaded);
-    if (this.state.hasDataLoaded = true) {
-      this.props.history.push("/account");
-    }
   };
 
   state = { error: null };
 
   render() {
-    console.log("Context", this.context);
-    console.log(`user`, this.state.user);
+    // console.log("Context", this.context);
     return (
       <div>
         <header role="banner">
