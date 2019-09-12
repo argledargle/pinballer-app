@@ -47,10 +47,7 @@ export default class Nav extends Component {
           res.dbUser.user_nick_name
         );
         this.context.admin_access = res.dbUser.admin_access;
-        window.sessionStorage.setItem(
-          "admin_access",
-          res.dbUser.admin_access
-        );
+        window.sessionStorage.setItem("admin_access", res.dbUser.admin_access);
         this.context.user_first_name = res.dbUser.user_first_name;
         window.sessionStorage.setItem(
           "user_first_name",
@@ -63,7 +60,8 @@ export default class Nav extends Component {
         );
         console.log("this context", this.context);
         this.setState({
-          user: res.dbUser
+          user: res.dbUser,
+          hasDataLoaded: true
         });
         username.value = "";
         password.value = "";
@@ -73,7 +71,10 @@ export default class Nav extends Component {
       .catch(res => {
         this.setState({ error: res.error });
       });
-    this.props.history.push("/account");
+    console.log("this.state.hasDataLoaded", this.state.hasDataLoaded);
+    if (this.state.hasDataLoaded = true) {
+      this.props.history.push("/account");
+    }
   };
 
   state = { error: null };

@@ -5,18 +5,26 @@ import Context from "../../contexts/Context.js";
 import config from "../../config";
 
 export default class LandingPage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      error: null,
+      hasDataLoaded: false
+    };
+  }
+
   static contextType = Context;
 
   static defaultProps = {};
 
-  state = { error: null,
-  hasDataLoaded: false };
+  state = { error: null, hasDataLoaded: false };
 
   //TODO: create a hasDataLoaded: false state and then update it when the data
   //has loaded from the API. This will probably be able to be repeated through
   //the rest of the app for our API calls
 
   async componentDidMount() {
+    console.log('pinballer_user_id', this.context.pinballer_user_id);
     this.setState({
       user_nick_name: window.sessionStorage.getItem("user_nick_name"),
       admin_access: window.sessionStorage.getItem("admin_access"),
@@ -24,18 +32,14 @@ export default class LandingPage extends Component {
       user_last_name: window.sessionStorage.getItem("user_last_name"),
       pinballer_user_id: window.sessionStorage.getItem("pinballer_user_id")
     });
-    console.log("user ID for API call", this.state.pinballer_user_id);
+    console.log("user ID for API call", this.context.pinballer_user_id);
     await fetch(
-      `${config.API_ENDPOINT}/scores/user/${this.state.pinballer_user_id}`
+      `${config.API_ENDPOINT}/scores/user/${this.context.pinballer_user_id}`
     )
-      .then(
-        console.log(
-          `${config.API_ENDPOINT}/scores/user/${this.state.pinballer_user_id}`
-        )
-      )
       .then(res => res.json())
       .then(accountScores => this.setState({ accountScores }))
-      .then(this.setState({ hasDataLoaded: true }));
+      .then(() => this.setState({ hasDataLoaded: true }));
+    }
     // AccountServices.getUser(this.context.pinballer_user_id);
     // put logic here that uses context of user logged in to fetch data from
     // the `/users/:user_id api`
@@ -46,17 +50,20 @@ export default class LandingPage extends Component {
     //   user_last_name: window.sessionStorage.getItem("user_last_name"),
     //   pinballer_user_id: window.sessionStorage.getItem("pinballer_user_id")
     // });
-  }
 
   render() {
     console.log("this.state", this.state);
     console.log("this context", this.context);
     const { error } = this.state;
 
-    console.log('this.state.hasDataLoaded', this.state.hasDataLoaded)
+    console.log("this.state.hasDataLoaded", this.state.hasDataLoaded);
 
     if (!this.state.hasDataLoaded) {
-      return (<h1>Loading</h1>);
+      return (
+        <div>
+          <h1>Loading</h1>
+        </div>
+      );
     }
 
     return (
