@@ -18,16 +18,18 @@ import ScrollToTop from "./components/Helpers/ScrollToTop";
 
 class App extends Component {
   static contextType = Context;
+
   render() {
     const contextValue = {
-      pinballer_user_id: null,
-      user_nick_name: null,
-      user_first_name: null,
+      pinballer_user_id: window.sessionStorage.getItem("pinballer_user_id") || null,
+      user_nick_name: window.sessionStorage.getItem("user_nick_name") || null,
+      user_first_name: window.sessionStorage.getItem("user_first_name") || null,
       // user_last_name: null,
       // user_email: null,
-      admin_access: false,
+      admin_access: window.sessionStorage.getItem("admin_access") || false
     };
-    console.log('contextValue', contextValue);
+
+    console.log("contextValue", contextValue);
     return (
       <Router>
         <ScrollToTop>

@@ -1,37 +1,49 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Context from "../../contexts/Context.js";
-// import AccountServices from "./account-services" 
+// import AccountServices from "./account-services"
 import config from "../../config";
 
-
 export default class LandingPage extends Component {
-  
   static contextType = Context;
 
-  static defaultProps ={
+  static defaultProps = {};
 
-  }
-  
   state = { error: null };
 
   async componentDidMount() {
-    await fetch(`${config.API_ENDPOINT}/scores/user/${this.state.pinballer_user_id}`)
-    .then(console.log(`${config.API_ENDPOINT}/scores/user/${this.state.pinballer_user_id}`))
-    .then(res=> res.json())
-    .then(accountScores => this.setState({ accountScores }))
+    this.setState({
+      user_nick_name: window.sessionStorage.getItem("user_nick_name"),
+      admin_access: window.sessionStorage.getItem("admin_access"),
+      user_first_name: window.sessionStorage.getItem("user_first_name"),
+      user_last_name: window.sessionStorage.getItem("user_last_name"),
+      pinballer_user_id: window.sessionStorage.getItem("pinballer_user_id")
+    });
+    console.log("user ID for API call", this.context.pinballer_user_id);
+    await fetch(
+      `${config.API_ENDPOINT}/scores/user/${this.context.pinballer_user_id}`
+    )
+      .then(
+        console.log(
+          `${config.API_ENDPOINT}/scores/user/${this.context.pinballer_user_id}`
+        )
+      )
+      .then(res => res.json())
+      .then(accountScores => this.setState({ accountScores }));
     // AccountServices.getUser(this.context.pinballer_user_id);
     // put logic here that uses context of user logged in to fetch data from
     // the `/users/:user_id api`
-    this.setState({ user_nick_name: window.sessionStorage.getItem("user_nick_name") })
-    this.setState({ admin_access: window.sessionStorage.getItem("admin_access") })
-    this.setState({ user_first_name: window.sessionStorage.getItem("user_first_name") })
-    this.setState({ user_last_name: window.sessionStorage.getItem("user_last_name") })
-    this.setState({ pinballer_user_id: window.sessionStorage.getItem("pinballer_user_id") })
+    // this.setState({
+    //   user_nick_name: window.sessionStorage.getItem("user_nick_name"),
+    //   admin_access: window.sessionStorage.getItem("admin_access"),
+    //   user_first_name: window.sessionStorage.getItem("user_first_name"),
+    //   user_last_name: window.sessionStorage.getItem("user_last_name"),
+    //   pinballer_user_id: window.sessionStorage.getItem("pinballer_user_id")
+    // });
   }
 
   render() {
-    console.log('this.state', this.state);
+    console.log("this.state", this.state);
     console.log("this context", this.context);
     const { error } = this.state;
 
@@ -47,6 +59,15 @@ export default class LandingPage extends Component {
         <section>
           <h3>Current high scores</h3>
           <br />
+          {/* mapping results from the API call above */}
+          {/* {this.state.accountScores.map(this.state.accountScores, i => {
+            return (
+              <li key={i} className="scores">
+                <p></p>
+              </li>
+            );
+          })} */}
+          {/* done mapping results from api key above */}
           <b>
             <Link to="/machine">Mars attacks!</Link>
           </b>{" "}
@@ -62,7 +83,6 @@ export default class LandingPage extends Component {
           </b>{" "}
           : 4,135,040
         </section>
-
 
         {/*
 
