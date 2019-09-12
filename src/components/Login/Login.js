@@ -31,13 +31,15 @@ export default class Nav extends Component {
       user_password: password.value
     })
       .then(res => {
-        console.log(`res.dbUser`, res.dbUser);
-        console.log(
-          `res.dbUser.pinballer_user_id`,
-          res.dbUser.pinballer_user_id
-        );
+        // console.log(`res.dbUser`, res.dbUser);
+        // console.log(
+        //   `res.dbUser.pinballer_user_id`,
+        //   res.dbUser.pinballer_user_id
+        // );
         this.context.pinballer_user_id = res.dbUser.pinballer_user_id;
         this.context.user_nick_name = res.dbUser.user_nick_name;
+        this.context.admin_access = res.dbUser.admin_access;
+        this.context.user_first_name = res.dbUser.user_first_name;
         console.log("this context", this.context);
         this.setState({
           user: res.dbUser
@@ -50,7 +52,7 @@ export default class Nav extends Component {
       .catch(res => {
         this.setState({ error: res.error });
       });
-      // this.props.history.push("/account")
+    this.props.history.push("/account");
   };
 
   state = { error: null };

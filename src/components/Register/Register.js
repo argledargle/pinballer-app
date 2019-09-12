@@ -44,7 +44,7 @@ export default class Register extends Component {
 
   render() {
     const { error } = this.state;
-    // console.log("this context", this.context);
+    console.log("this context", this.context);
     return (
       <div>
         <header role="banner">

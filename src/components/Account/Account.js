@@ -1,20 +1,32 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Context from "../../contexts/Context.js";
+// import AccountServices from "./account-services" 
+import config from "../../config";
+
 
 export default class LandingPage extends Component {
+  
   static contextType = Context;
+
   static defaultProps ={
+
   }
   
   state = { error: null };
 
-  componentDidMount() {
+  async componentDidMount() {
+    await fetch(`${config.API_ENDPOINT}/scores/user/${this.context.pinballer_user_id}`)
+    .then(console.log(`${config.API_ENDPOINT}/scores/user/${this.context.pinballer_user_id}`))
+    .then(res=> res.json())
+    .then(json => this.setState({ json }))
+    // AccountServices.getUser(this.context.pinballer_user_id);
     // put logic here that uses context of user logged in to fetch data from
-    // the `/users/:user_id api
+    // the `/users/:user_id api`
   }
 
   render() {
+    console.log('this.state.json', this.state.json);
     console.log("this context", this.context);
     const { error } = this.state;
 
@@ -24,7 +36,7 @@ export default class LandingPage extends Component {
         <header role="banner">
           <h1>Welcome</h1>
           <h2>
-            [<i>Username</i>]
+            [<i>{this.context.user_nick_name} Username</i>]
           </h2>
         </header>
         <section>

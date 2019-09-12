@@ -32,9 +32,9 @@ export default class Machine extends Component {
         </header>
 
         <section>
-          <form class="score-submission-form">
+          <form className="score-submission-form">
             <div>
-              <label for="loation-search">Want to enter a new score?</label>
+              <label htmlFor="loation-search">Want to enter a new score?</label>
               <br />
               <input
                 type="number"

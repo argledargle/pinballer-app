@@ -23,11 +23,11 @@ class App extends Component {
       pinballer_user_id: null,
       user_nick_name: null,
       user_first_name: null,
-      user_last_name: null,
-      user_email: null,
+      // user_last_name: null,
+      // user_email: null,
       admin_access: false,
     };
-    console.log(contextValue);
+    console.log('contextValue', contextValue);
     return (
       <Router>
         <ScrollToTop>

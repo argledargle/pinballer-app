@@ -15,7 +15,7 @@ export default class Search extends Component {
         </header>
 
         <section>
-          <form class="edit-location-machine-form">
+          <form className="edit-location-machine-form">
             <div>
               <label for="edit-location-machine-form">
                 Is there a machine listed that shouldn't be?

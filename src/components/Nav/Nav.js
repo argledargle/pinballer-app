@@ -10,6 +10,7 @@ export default class Nav extends Component {
     /* when logging out, clear the callbacks to the refresh api and idle auto logout */
     TokenService.clearCallbackBeforeExpiry();
     IdleService.unRegisterIdleResets();
+    window.location.reload();
   };
 
   renderLogoutLink() {

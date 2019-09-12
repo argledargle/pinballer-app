@@ -15,7 +15,7 @@ export default class Search extends Component {
         </header>
 
         <section>
-          <form class="edit-score-form">
+          <form className="edit-score-form">
             <div>
               <label for="edit-score-form">Who's high score should we change?</label>
               <br />
