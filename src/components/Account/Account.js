@@ -9,7 +9,12 @@ export default class LandingPage extends Component {
 
   static defaultProps = {};
 
-  state = { error: null };
+  state = { error: null,
+  hasDataLoaded: false };
+
+  //TODO: create a hasDataLoaded: false state and then update it when the data
+  //has loaded from the API. This will probably be able to be repeated through
+  //the rest of the app for our API calls
 
   async componentDidMount() {
     this.setState({
@@ -29,7 +34,8 @@ export default class LandingPage extends Component {
         )
       )
       .then(res => res.json())
-      .then(accountScores => this.setState({ accountScores }));
+      .then(accountScores => this.setState({ accountScores }))
+      .then(this.setState({ hasDataLoaded: true }));
     // AccountServices.getUser(this.context.pinballer_user_id);
     // put logic here that uses context of user logged in to fetch data from
     // the `/users/:user_id api`
@@ -46,6 +52,12 @@ export default class LandingPage extends Component {
     console.log("this.state", this.state);
     console.log("this context", this.context);
     const { error } = this.state;
+
+    console.log('this.state.hasDataLoaded', this.state.hasDataLoaded)
+
+    if (!this.state.hasDataLoaded) {
+      return <h1>Loading</h1>;
+    }
 
     return (
       <div>
