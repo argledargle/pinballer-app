@@ -16,17 +16,22 @@ export default class LandingPage extends Component {
   state = { error: null };
 
   async componentDidMount() {
-    await fetch(`${config.API_ENDPOINT}/scores/user/${this.context.pinballer_user_id}`)
-    .then(console.log(`${config.API_ENDPOINT}/scores/user/${this.context.pinballer_user_id}`))
+    await fetch(`${config.API_ENDPOINT}/scores/user/${this.state.pinballer_user_id}`)
+    .then(console.log(`${config.API_ENDPOINT}/scores/user/${this.state.pinballer_user_id}`))
     .then(res=> res.json())
-    .then(json => this.setState({ json }))
+    .then(accountScores => this.setState({ accountScores }))
     // AccountServices.getUser(this.context.pinballer_user_id);
     // put logic here that uses context of user logged in to fetch data from
     // the `/users/:user_id api`
+    this.setState({ user_nick_name: window.sessionStorage.getItem("user_nick_name") })
+    this.setState({ admin_access: window.sessionStorage.getItem("admin_access") })
+    this.setState({ user_first_name: window.sessionStorage.getItem("user_first_name") })
+    this.setState({ user_last_name: window.sessionStorage.getItem("user_last_name") })
+    this.setState({ pinballer_user_id: window.sessionStorage.getItem("pinballer_user_id") })
   }
 
   render() {
-    console.log('this.state.json', this.state.json);
+    console.log('this.state', this.state);
     console.log("this context", this.context);
     const { error } = this.state;
 
@@ -36,7 +41,7 @@ export default class LandingPage extends Component {
         <header role="banner">
           <h1>Welcome</h1>
           <h2>
-            [<i>{this.context.user_nick_name} Username</i>]
+            [<i>{this.state.user_nick_name}</i>]
           </h2>
         </header>
         <section>
