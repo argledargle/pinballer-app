@@ -37,9 +37,30 @@ export default class Nav extends Component {
         //   res.dbUser.pinballer_user_id
         // );
         this.context.pinballer_user_id = res.dbUser.pinballer_user_id;
+        window.sessionStorage.setItem(
+          "pinballer_user_id",
+          res.dbUser.pinballer_user_id
+        );
         this.context.user_nick_name = res.dbUser.user_nick_name;
+        window.sessionStorage.setItem(
+          "user_nick_name",
+          res.dbUser.user_nick_name
+        );
         this.context.admin_access = res.dbUser.admin_access;
+        window.sessionStorage.setItem(
+          "admin_access",
+          res.dbUser.admin_access
+        );
         this.context.user_first_name = res.dbUser.user_first_name;
+        window.sessionStorage.setItem(
+          "user_first_name",
+          res.dbUser.user_first_name
+        );
+        this.context.user_first_name = res.dbUser.user_last_name;
+        window.sessionStorage.setItem(
+          "user_last_name",
+          res.dbUser.user_last_name
+        );
         console.log("this context", this.context);
         this.setState({
           user: res.dbUser
