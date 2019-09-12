@@ -14,6 +14,11 @@ const TokenService = {
   clearAuthToken() {
     console.info("clearing the auth token");
     window.sessionStorage.removeItem(config.TOKEN_KEY);
+    window.sessionStorage.removeItem("pinballer_user_id");
+    window.sessionStorage.removeItem("user_nick_name");
+    window.sessionStorage.removeItem("admin_access");
+    window.sessionStorage.removeItem("user_first_name");
+    window.sessionStorage.removeItem("user_last_name");
   },
   hasAuthToken() {
     return !!TokenService.getAuthToken();
