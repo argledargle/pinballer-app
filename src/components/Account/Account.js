@@ -95,9 +95,9 @@ export default class LandingPage extends Component {
               <li key={i} className="machine">
                 <p>
                   <b>
-                    <Link to="/machine/">{scores.machine_name}</Link>
+                    <Link to='/machine/'>{scores.machine_name}</Link>
                   </b>{" "}
-                  : {scores.score_value}
+                  : {scores.score_value.toLocaleString(navigator.language, { minimumFractionDigits: 0 })}
                 </p>
               </li>
             );

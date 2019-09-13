@@ -26,6 +26,23 @@ export default class Search extends Component {
       .then(() => this.setState({ hasDataLoaded: true }));
   }
 
+  postLocation() {
+    console.log(`posting ${config.API_ENDPOINT}/locations`);
+    fetch(`${config.API_ENDPOINT}/locations`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        location_name: "something",
+        location_address: "something else"
+      })
+    }).then(res => res.json())
+    .then (res => console.log(res))
+    //TODO: implement this.props.history.push("/locations/:location_id") functionality
+  }
+
   render() {
     const { error } = this.state;
     if (!this.state.hasDataLoaded) {
@@ -55,9 +72,9 @@ export default class Search extends Component {
                 <br />
                 {/* mapping function goes below here */}
                 <select>
-                  {this.state.locations.map((location, i) => {
+                  {this.state.locations.map(location => {
                     return (
-                      <option key={i} className="location">
+                      <option key={location.location_id} className="location">
                         {location.location_name}
                       </option>
                     );
