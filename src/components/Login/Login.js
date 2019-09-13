@@ -62,6 +62,7 @@ export default class Nav extends Component {
         TokenService.saveAuthToken(res.authToken);
         this.props.onLoginSuccess();
         this.props.history.push("/account");
+        window.location.reload();
       })
       .catch(res => {
         this.setState({ error: res.error });

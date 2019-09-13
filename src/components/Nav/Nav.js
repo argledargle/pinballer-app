@@ -5,12 +5,13 @@ import IdleService from '../../services/idle-service'
 import "./Nav.css";
 
 export default class Nav extends Component {
+
   handleLogoutClick = () => {
     TokenService.clearAuthToken();
     /* when logging out, clear the callbacks to the refresh api and idle auto logout */
     TokenService.clearCallbackBeforeExpiry();
     IdleService.unRegisterIdleResets();
-    window.location.reload();
+    // window.location.reload();
   };
 
   renderLogoutLink() {
@@ -19,10 +20,12 @@ export default class Nav extends Component {
         <span id="left">
           <Link to="/">Pinballer</Link>
         </span>
+        {" "}
         <span id="right">
-          <Link onClick={this.handleLogoutClick} to="/">
+          <Link to="/" onClick={this.handleLogoutClick}>
             Logout
           </Link>
+          {" "}
           <Link to="/search">Search</Link>
         </span>
       </div>
@@ -35,8 +38,10 @@ export default class Nav extends Component {
         <span id="left">
           <Link to="/">Pinballer</Link>
         </span>
+        {" "}
         <span id="right">
           <Link to="/login">Log in</Link>
+          {" "}
           <Link to="/register">Register</Link>
         </span>
       </div>

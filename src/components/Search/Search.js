@@ -1,17 +1,50 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import Context from "../../contexts/Context.js";
+import config from "../../config";
 
 export default class Search extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      error: null,
+      hasDataLoaded: false
+    };
+  }
+
+  static contextType = Context;
+
+  static defaultProps = {};
+
+  state = { error: null, hasDataLoaded: false };
+
+  async componentDidMount() {
+    console.log(`calling ${config.API_ENDPOINT}/locations`);
+    await fetch(`${config.API_ENDPOINT}/locations`)
+      .then(res => res.json())
+      .then(locations => this.setState({ locations }))
+      .then(() => this.setState({ hasDataLoaded: true }));
+  }
+
   render() {
-    // function handleClick(e) {
-    //     e.preventDefault()
-    // }
+    const { error } = this.state;
+    if (!this.state.hasDataLoaded) {
+      return (
+        <div>
+          <div role="alert">{error && <p className="red">{error}</p>}</div>
+          <header role="banner">
+            <h1>Loading</h1>
+          </header>
+        </div>
+      );
+    }
+
     return (
       <div>
         <main role="main">
           <header role="banner">
             <h1>Are you looking for a machine or a location?</h1>
-            <h2>Search for both below</h2>
+            <h2>Search or submit below</h2>
           </header>
           <section>
             <form className="location-search-form">
@@ -20,12 +53,21 @@ export default class Search extends Component {
                   Which location are you looking for?
                 </label>
                 <br />
-                <input
-                  type="text"
-                  name="location-search"
-                  id="location-search"
-                />
-                <Link to="/locationresults"><button type="submit">Search</button></Link>
+                {/* mapping function goes below here */}
+                <select>
+                  {this.state.locations.map((location, i) => {
+                    return (
+                      <option key={i} className="location">
+                        {location.location_name}
+                      </option>
+                    );
+                  })}
+                </select>
+                <br />
+                {/* mapping function goes above here */}
+                <Link to="/locationresults">
+                  <button type="submit">Go</button>
+                </Link>
               </div>
             </form>
           </section>
@@ -37,11 +79,14 @@ export default class Search extends Component {
                 </label>
                 <br />
                 <input type="text" name="machine-search" id="machine-search" />
-                <Link to="/machine"><button type="submit">Search</button></Link>
+                <br />
+                <Link to="/machine">
+                  <button type="submit">Search</button>
+                </Link>
               </div>
             </form>
           </section>
-          {/* <section>
+          <section>
             <form className="location-submission-form">
               <div>
                 <label htmlFor="loation-search">
@@ -50,14 +95,14 @@ export default class Search extends Component {
                   Submit the location below.
                 </label>
                 <br />
-                Location Name:{" "}
+                Location Name: <br />
                 <input
                   type="text"
                   name="location-submission-name"
                   id="location-submission-name"
                 />
                 <br />
-                Address:{" "}
+                Address: <br />
                 <input
                   type="text"
                   name="location-submission-address"
@@ -65,9 +110,11 @@ export default class Search extends Component {
                 />
               </div>
 
-              <Link to="/machine"><button type="submit">Submit</button></Link>
+              <Link to="/machine">
+                <button type="submit">Submit</button>
+              </Link>
             </form>
-          </section> */}
+          </section>
         </main>
       </div>
     );

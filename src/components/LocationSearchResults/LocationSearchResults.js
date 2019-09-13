@@ -16,9 +16,9 @@ export default class LocationSearchResults extends Component {
           </header>
           <section><Link to ="/location">Location</Link> : Address</section>
           <section>
-            <form class="location-submission-form">
+            <form className="location-submission-form">
               <div>
-                <label for="loation-search">
+                <label htmlFor="loation-search">
                   Wrong location?
                   <br />
                   Add it to our database below.

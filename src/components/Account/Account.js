@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Context from "../../contexts/Context.js";
 // import AccountServices from "./account-services"
 import config from "../../config";
+import "./account.css";
 
 export default class LandingPage extends Component {
   constructor(props) {
@@ -59,6 +60,23 @@ export default class LandingPage extends Component {
       );
     }
 
+    if (this.state.accountScores === undefined) {
+      return (
+        <div>
+          <div role="alert">{error && <p className="red">{error}</p>}</div>
+          <header role="banner">
+            <h1>Welcome</h1>
+            <h2>
+              <i>{this.state.user_nick_name}</i>
+            </h2>
+          </header>
+          <section>
+            <h3>You have no scores yet.</h3>
+          </section>
+        </div>
+      );
+    }
+
     return (
       <div>
         <div role="alert">{error && <p className="red">{error}</p>}</div>
@@ -72,28 +90,19 @@ export default class LandingPage extends Component {
           <h3>Current scores</h3>
           <br />
           {/* mapping results from the API call above */}
-          {this.state.accountScores.map(score_value => {
+          {this.state.accountScores.map((scores, i) => {
             return (
-              <li key={score_value.macine_id} className="machine">
-                <p>{score_value.machine_name} : {score_value.score_value}</p>
+              <li key={i} className="machine">
+                <p>
+                  <b>
+                    <Link to="/machine/">{scores.machine_name}</Link>
+                  </b>{" "}
+                  : {scores.score_value}
+                </p>
               </li>
             );
           })}
           {/* done mapping results from api key above */}
-          <b>
-            <Link to="/machine">Mars attacks!</Link>
-          </b>{" "}
-          : 30,120,460
-          <br />
-          <b>
-            <Link to="/machine">Medieval Madness</Link>
-          </b>{" "}
-          : 16,527,380
-          <br />
-          <b>
-            <Link to="/machine">Metallica</Link>
-          </b>{" "}
-          : 4,135,040
         </section>
 
         {/*
