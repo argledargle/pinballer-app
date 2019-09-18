@@ -8,8 +8,10 @@ export default class Search extends Component {
     super(props);
     this.state = {
       error: null,
-      hasDataLoaded: false
+      hasDataLoaded: false,
+      locations: null
     };
+    this.select = this.select.bind(this);
   }
 
   static contextType = Context;
@@ -18,6 +20,31 @@ export default class Search extends Component {
 
   state = { error: null, hasDataLoaded: false };
 
+  select(e) {
+    console.log(e.target.value);
+    this.context.destination_id = e.target.value;
+    window.sessionStorage.setItem("destination_id", e.target.value);
+    var destination = this.state.locations.find(
+      item => item.location_id == e.target.value
+    );
+    this.context.destination_name = destination.location_name;
+    window.sessionStorage.setItem(
+      "destination_name",
+      destination.location_name
+    );
+    this.context.destination_address = destination.location_address;
+    window.sessionStorage.setItem(
+      "destination_address",
+      destination.location_address
+    );
+    console.log(this.context.destination_address);
+    console.log(this.context.destination_name);
+    console.log(destination);
+    // window.sessionStorage.setItem("destination_address", e.target.locationaddress)
+    // window.sessionStorage.setItem("destination_name", e.target.locationname)
+    // console.log(window.sessionStorage.getItem("destination_name"))
+  }
+
   async componentDidMount() {
     console.log(`calling ${config.API_ENDPOINT}/locations`);
     await fetch(`${config.API_ENDPOINT}/locations`)
@@ -25,7 +52,7 @@ export default class Search extends Component {
       .then(locations => this.setState({ locations }))
       .then(() => this.setState({ hasDataLoaded: true }));
   }
-
+  //TODO: finish this post location function
   postLocation() {
     console.log(`posting ${config.API_ENDPOINT}/locations`);
     fetch(`${config.API_ENDPOINT}/locations`, {
@@ -38,12 +65,14 @@ export default class Search extends Component {
         location_name: "something",
         location_address: "something else"
       })
-    }).then(res => res.json())
-    .then (res => console.log(res))
+    })
+      .then(res => res.json())
+      .then(res => console.log(res));
     //TODO: implement this.props.history.push("/locations/:location_id") functionality
   }
 
   render() {
+    console.log(this.state.locations);
     const { error } = this.state;
     if (!this.state.hasDataLoaded) {
       return (
@@ -71,10 +100,17 @@ export default class Search extends Component {
                 </label>
                 <br />
                 {/* mapping function goes below here */}
-                <select>
+                <select defaultValue="no-value" onChange={this.select}>
+                  <option value="no-value" disabled>
+                    Select a location
+                  </option>
                   {this.state.locations.map(location => {
                     return (
-                      <option key={location.location_id} className="location">
+                      <option
+                        key={location.location_id}
+                        value={location.location_id}
+                        className="location"
+                      >
                         {location.location_name}
                       </option>
                     );
@@ -82,12 +118,18 @@ export default class Search extends Component {
                 </select>
                 <br />
                 {/* mapping function goes above here */}
-                <Link to="/locationresults">
+                <Link
+                  to={{
+                    pathname: "/location",
+                    state: { machine_location: this.state.destination_id }
+                  }}
+                >
                   <button type="submit">Go</button>
                 </Link>
               </div>
             </form>
           </section>
+          {/* Moved to be out of scope, to be implemented at later date.
           <section>
             <form className="machine-search-form">
               <div>
@@ -102,7 +144,7 @@ export default class Search extends Component {
                 </Link>
               </div>
             </form>
-          </section>
+          </section> */}
           <section>
             <form className="location-submission-form">
               <div>

@@ -26,7 +26,10 @@ class App extends Component {
       user_first_name: window.sessionStorage.getItem("user_first_name") || null,
       // user_last_name: null,
       // user_email: null,
-      admin_access: window.sessionStorage.getItem("admin_access") || false
+      admin_access: window.sessionStorage.getItem("admin_access") || false,
+      destination_id: window.sessionStorage.getItem("destination_id") || false,
+      destination_address: window.sessionStorage.getItem("destination_address") || false,
+      destination_name: window.sessionStorage.getItem("destination_name") || false,
     };
 
     console.log("contextValue", contextValue);
