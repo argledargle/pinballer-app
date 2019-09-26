@@ -4,9 +4,6 @@ import "./LandingPage.css";
 
 export default class LandingPage extends Component {
   render() {
-    //  function handleClick(e) {
-    //    e.preventDefault()
-    //  }
     return (
       <div>
         <header role="banner">
@@ -40,54 +37,6 @@ export default class LandingPage extends Component {
           <h4>La Nina</h4>
           <b>Metallica</b> : 4,135,040
         </section>
-
-        {/* I'm not sure if I even want to include this.
-        I already have a register link in the nav bar. */}
-
-        {/* <section>
-          <h3>Sign-up</h3>
-          <form classfor="signup-form">
-            <div>
-              <label htmlFor="first-name">First name</label>
-              <input
-                placeholder="First Name"
-                type="text"
-                name="first-name"
-                id="first-name"
-              />
-            </div>
-            <div>
-              <label htmlFor="last-name">Last name</label>
-              <input
-                type="text"
-                name="last-name"
-                id="last-name"
-                placeholder="Last Name"
-              />
-            </div>
-            <div>
-              <label htmlFor="nickname">Nickname</label>
-              <input type="text" name="nickname" id="nickname" />
-            </div>
-            <div>
-              <label htmlFor="username">Email</label>
-              <input type="text" name="username" id="username" />
-            </div>
-            <div>
-              <label htmlFor="password">Password</label>
-              <input type="password" name="password" id="password" />
-            </div>
-            <div>
-              <label htmlFor="password">Confirm Password</label>
-              <input
-                type="password"
-                name="confirm-password"
-                id="confirm-password"
-              />
-            </div>
-            <Link to ="/account"><button type="submit">Sign Up</button></Link>
-          </form>
-        </section> */}
       </div>
     );
   }
